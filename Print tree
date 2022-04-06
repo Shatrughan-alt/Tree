@@ -1,0 +1,32 @@
+class node{
+    int data;
+    node left,right;
+    node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+public class Binary_tree {
+    node root;
+    public void print(node root){
+        node temp=root;
+        if(temp==null)
+            return;
+        else{
+            print(temp.left);
+            print(temp.right);
+            System.out.println(temp.data);
+
+        }
+    }
+    public static void main(String args[]){
+        Binary_tree obj=new Binary_tree();
+        obj.root=new node(10);
+        obj.root.left=new node(8);
+        obj.root.right=new node(13);
+        obj.root.left.left=new node(7);
+        obj.root.left.right=new node(9);
+
+        obj.print(obj.root);
+    }
+}
