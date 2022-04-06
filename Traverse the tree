@@ -1,0 +1,61 @@
+class node{
+    int data;
+    node left,right;
+    node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+public class btree {
+    node root;
+    public void inorder(node root){
+        if(root==null)
+            return;
+        else{
+            inorder(root.left);
+            System.out.print(root.data+" ");
+            inorder(root.right);
+        }
+    }
+    public void preorder(node root){
+        if(root==null)
+            return;
+        else{
+            System.out.print(root.data+" ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+    public void postorder(node root){
+
+        if(root==null)
+            return;
+        else{
+            postorder(root.left);
+            postorder(root.right);
+            System.out.print(root.data+" ");
+        }
+    }
+    void inorder(){
+        inorder(root);
+    }
+    void preorder(){
+        preorder(root);
+    }
+    void postorder(){
+        postorder(root);
+    }
+    public static void main(String args[]){
+        btree obj=new btree();
+        obj.root=new node(10);
+        obj.root.left=new node(8);
+        obj.root.right=new node(13);
+        obj.root.left.left=new node(7);
+        obj.root.left.right=new node(9);
+        obj.inorder();
+        System.out.println();
+        obj.postorder();
+        System.out.println();
+        obj.preorder();
+    }
+}
