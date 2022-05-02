@@ -1,0 +1,85 @@
+import java.util.*;
+class Node{
+    int data;
+    Node left,right;
+    Node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+public class Main{
+    static Node root;
+    public void inorder(Node root){
+        if(root==null)
+        return;
+        else{
+            inorder(root.left);
+            System.out.println(root.data);
+            inorder(root.right);
+        }
+    }
+    public void search(Node root,int key){
+        if(root==null)
+        return;
+        Node temp=root,semp=null;
+        Queue<Node> q =new LinkedList<Node>();
+        q.add(temp);
+        while(!q.isEmpty()){
+            temp=q.peek();
+            q.remove();
+            if(temp.data==key)
+            semp=temp;
+            if(temp.left!=null)
+            q.add(temp.left);
+            if(temp.right!=null)
+            q.add(temp.right);
+        }
+        if(semp!=null)
+        {
+            int x=temp.data;
+            deletion(root,temp);
+            semp.data=x;
+        }
+    }
+    public void deletion(Node root,Node cemp){
+        Queue<Node> q=new LinkedList<Node>();
+        Node temp=root;
+        q.add(temp);
+        while(!q.isEmpty()){
+            temp=q.peek();
+            q.remove();
+            if(temp==cemp){
+                temp=null;
+                return;
+            }
+            if(temp.left!=null){
+                if(temp.left==cemp){
+                temp.left=null;
+                return;}
+                else
+                q.add(temp.left);
+            }
+            
+            if(temp.right!=null){
+                if(temp.right==cemp){
+                    temp.right=null;
+                    return;
+                }
+                else
+                q.add(temp.right);
+            }
+        }
+    }
+    public static void main(String args[]){
+        Main obj=new Main();
+        obj.root=new Node(10);
+        obj.root.left=new Node(8);
+        obj.root.right=new Node(13);
+        obj.root.left.left=new Node(7);
+        obj.root.left.right=new Node(9);
+        obj.root.left.left.left=new Node(100);
+        int key=7;
+        obj.search(root,key);
+        obj.inorder(root);
+    }
+}
