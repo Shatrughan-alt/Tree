@@ -1,0 +1,58 @@
+import java.util.*;
+class Node{
+    int data;
+    Node left,right;
+    Node(int data){
+        this.data=data;
+        left=right=null;
+    }
+}
+public class Main{
+    static Node root;
+    public void inorder(Node root){
+        if(root==null)
+        return;
+        else{
+            inorder(root.left);
+            System.out.println(root.data);
+            inorder(root.right);
+        }
+    }
+    public void insert(Node root,int key){
+        if(root==null)
+        root=new Node(key);
+        else{
+            Node temp=root;
+            Queue<Node> q=new LinkedList<Node>();
+            q.add(temp);
+            while(!q.isEmpty()){
+                temp=q.peek();
+                q.remove();
+                if(temp.left==null){
+                    temp.left=new Node(key);
+                    break;
+                }
+                else
+                q.add(temp.left);
+                if(temp.right==null)
+                {
+                    temp.right=new Node(key);
+                    break;
+                }
+                else
+                q.add(temp.right);
+            }
+        }
+    }
+    public static void main(String args[]){
+        Main obj=new Main();
+        obj.root=new Node(10);
+        obj.root.left=new Node(8);
+        obj.root.right=new Node(13);
+        obj.root.left.left=new Node(7);
+        obj.root.left.right=new Node(9);
+        obj.root.left.left.left=new Node(100);
+        obj.insert(root,77);
+        obj.inorder(root);
+    }
+}
