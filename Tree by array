@@ -31,9 +31,6 @@ public class Main
     }
 	public static void main(String[] args) {
 	    Main obj=new Main();
-	    for(int i=1;i<n;i++){
-	        obj.insertE(i);
-	    }
 	    int arr[]=new int[]{1,2,3,4,5};
 	    obj.root=obj.insert(arr,0);
 	    obj.print(obj.root);
