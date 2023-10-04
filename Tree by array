@@ -12,7 +12,7 @@ public class Main
     public Node insert(int arr[],int i){
        
         if(i<arr.length){
-           Node root=new Node(arr[i]);  
+           Node root=new Node(arr[i]);    //if we not initialise root here than it will print only root element because after every recursion tree update the root.
             root.left=insert(arr,2*i+1);
             root.right=insert(arr,2*i+2);
             return root;
