@@ -1,0 +1,32 @@
+import java.util.*;
+class node{
+    int data;
+    node left,right;
+    node(int data){
+        this.data=data;
+    }
+}
+public class dfs {
+    public static void dfs(node root){
+        Stack<node> stk=new Stack<>();
+        stk.push(root);
+        while(!stk.isEmpty()){
+            node value=stk.pop();
+            if (value.right != null)
+                stk.add(value.right);
+            if (value.left != null)
+                stk.add(value.left);
+            System.out.print(value.data+"=>");
+        }
+    }
+    public static void main(String[] args) {
+        node root = new node(1);
+        root.left = new node(2);
+        root.left.left = new node(4);
+        root.left.right = new node(5);
+        root.right = new node(3);
+        root.right.left = new node(6);
+        root.right.right = new node(7);
+        dfs(root);
+    }
+}
