@@ -1,0 +1,56 @@
+class node{
+    int data;
+    node left,right;
+    node(int data){
+        this.data=data;
+    }
+}
+public class treeMaxMin {
+     node root;
+    public static int Min(node root){
+        if(root==null)
+        return -1;
+        int n=root.data;
+        int l=Min(root.left);
+        int r=Min(root.right);
+        if(l<n)
+        n=l;
+        else
+        n=r;
+        return n;
+    }
+    public int Min(){
+        return Min(root);
+    }
+    
+    public static int Max(node root) {
+        if(root==null)
+        return -1;
+        int n=root.data;
+        int l=Max(root.left);
+        int r=Max(root.right);
+        if(l>n)
+        n=l;
+        else
+        n=r;
+        return n;
+    }
+
+    public int Max() {
+        return Max(root);
+    }
+    public static void main(String[] args) {
+        treeMaxMin obj=new treeMaxMin();
+        obj.root=new node(1);
+        obj.root.left=new node(2);
+        obj.root.right=new node(3);
+        obj.root.left.left=new node(4);
+        obj.root.left.right=new node(5);
+        obj.root.right.left=new node(6);
+        obj.root.right.right=new node(7);
+        int min=obj.Min();
+        int max=obj.Max();
+        System.out.println("Min"+min);
+        System.out.println("Max"+max);
+    }
+}
