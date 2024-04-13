@@ -1,0 +1,31 @@
+class node {
+    int data;
+    node left,right;
+    node(int data){
+        this.data=data;
+    }
+}
+public class tree_depth {
+    node root;
+    public static int depth(node root){
+        if(root==null)
+        return 0;
+        int llength=depth(root.left);
+        int rlength=depth(root.right);
+        if(llength>rlength)
+        return llength+1;
+        else
+        return rlength+1;
+    }
+    public static void main(String[] args) {
+        tree_depth obj=new tree_depth();
+        obj.root=new node(1);
+        obj.root.left=new node(2);
+        obj.root.right=new node(3);
+        obj.root.left.left=new node(4);
+        obj.root.left.right=new node(5);
+        obj.root.right.left=new node(6);
+        obj.root.right.right=new node(7);
+        System.out.println(depth(obj.root));
+    }
+}
