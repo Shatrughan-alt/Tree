@@ -1,0 +1,42 @@
+class node {
+    int data;
+    node left,right;
+    node(int data){
+        this.data=data;
+    }
+}
+public class tree_CountPrintLeaf {
+    node root;
+    void PrintLeafNode(node root){
+        int sum=0;
+        if(root==null)
+        return;
+        if(root.left==null&&root.right==null)
+        {
+            System.out.print(root.data+" ");
+        }
+        PrintLeafNode(root.left);
+        PrintLeafNode(root.right);
+    }
+    int CountLeafNode(node root){
+        if(root==null)
+        return 0;
+        if(root.left==null&&root.right==null)
+        return 1;
+        else
+        return CountLeafNode(root.left)+CountLeafNode(root.right);
+    }
+    public static void main(String[] args) {
+        tree_CountPrintLeaf obj = new tree_CountPrintLeaf();
+        obj.root = new node(1);
+        obj.root.left = new node(2);
+        obj.root.right = new node(3);
+        obj.root.left.left = new node(4);
+        obj.root.left.right = new node(5);
+        obj.root.right.left = new node(6);
+        obj.root.right.right = new node(7);
+        obj.PrintLeafNode(obj.root);
+        System.out.println();
+        System.out.println("Total No. Of Leaf Node = "+obj.CountLeafNode(obj.root));
+    }
+}
